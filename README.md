@@ -6,8 +6,21 @@ This repository is a minimal Markdown-first workspace for developing an early-st
 
 This repository is intended to function both as a working research archive and as a public-facing project page on GitHub and GitHub Pages. The public presentation should emphasize research framing, evolving notes, and transparent progress rather than polished product claims.
 
+## Start here
 
-## Paper completion tracker
+- [GitHub Pages](https://jy00295005.github.io/decision-grade-memory/)
+- [Latest review PDF](output/pdf/sme_decision_support_review_export.pdf)
+- [Research positioning](docs/research_positioning.md)
+- [Outputs](docs/outputs.md)
+- [Research log](docs/research_log.md)
+- [Prompt library](prompts/README.md)
+
+## Latest review artifact
+
+- Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
+- First-day synthesis run: approximately `$0.50` total usage cost, completed in about `20 minutes`
+
+## Research progress tracker
 
 | Step | Owner | Time | Cost | PDF |
 | --- | --- | --- | --- | --- |
@@ -17,11 +30,6 @@ This repository is intended to function both as a working research archive and a
 | 4. Data and graph design draft | Codex |  |  |  |
 | 5. Evaluation design draft | Codex |  |  |  |
 | 6. Full manuscript integration | Codex |  |  |  |
-
-## Day 1 Literature Review
-
-- Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
-- First-day synthesis run: approximately `$0.50` total usage cost, completed in about `20 minutes`
 
 ## Project Identity
 
@@ -33,6 +41,7 @@ This repository is intended to function both as a working research archive and a
 
 - GitHub repository: the canonical home for version history, notes, manuscript structure, and research updates.
 - GitHub Pages: a lightweight landing page for the project overview, positioning, current status, and key research notes.
+  - URL: `https://jy00295005.github.io/decision-grade-memory/`
 - Presentation style: research-first, transparent, and evolving; not startup-style marketing.
 
 ## Why this repo exists
@@ -73,6 +82,9 @@ Literature review + outline design
 ## Suggested GitHub Pages structure
 
 - `docs/index.md`: public landing page for project framing and navigation.
+- `docs/series.md`: public series view for the evolving research storyline.
+- `docs/outputs.md`: public index of PDFs and shareable outputs.
+- `docs/research_log.md`: dated research progress log.
 - `docs/research_positioning.md`: research gap and positioning note.
 - `references/notes/`: working literature notes that can be linked selectively from the landing page.
 
@@ -82,6 +94,7 @@ Literature review + outline design
 - `prompts/setup/`: project setup and repository initialization prompts.
 - `prompts/literature_review/`: staged prompts for literature reconnaissance, pain-point review, AI-limit review, and research positioning.
 - `prompts/writing/`: section drafting and revision prompts for manuscript work.
+- [Prompt index](prompts/README.md): recommended order and usage notes.
 
 ## How Codex should work in this repo
 
@@ -113,4 +126,4 @@ Literature review + outline design
 - TeX, journal formatting, or submission packaging
 - invented citations, results, or empirical claims
 - scripts, CI, Docker, tests, or automation
-- figures, tables, or datasets before there is real source material
+- fabricated figures or unsupported tables before there is real source material

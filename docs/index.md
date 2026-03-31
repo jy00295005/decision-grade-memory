@@ -14,6 +14,16 @@ The project asks a narrow question:
 
 How should AI systems support SME decision-making when decisions are weakly structured, constraint-heavy, and distributed across incomplete records, prior episodes, and changing business conditions?
 
+## Start here
+
+- [Latest review PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf)
+- [Outputs](outputs.md)
+- [Research log](research_log.md)
+- [Research positioning](research_positioning.md)
+- [Series](series.md)
+- [Prompt library](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts)
+- [Literature notes index](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/README.md)
+
 ## Today's review output
 
 - [Review PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf)
@@ -38,6 +48,9 @@ See the full positioning note here:
 - [Outline](outline.md)
 - [Research Questions](rq.md)
 - [Research Positioning](research_positioning.md)
+- [Outputs](outputs.md)
+- [Research Log](research_log.md)
+- [Series](series.md)
 - [Literature Review Round 1](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/sme_ai_decision_review_round1.md)
 - [SME Decision Pain Points](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/sme_decision_pain_points.md)
 - [AI Limits for SME Decision Support](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/ai_limits_for_sme_decision_support.md)
@@ -74,13 +87,13 @@ Literature review, problem framing, and research positioning.
 2. Expand direct evidence on SME decision episodes and information use.
 3. Translate the positioning note into a sharper introduction and related-work structure.
 
-## Paper completion steps
+## Research progress tracker
 
-| Step | Goal | Inputs | Planned output | Status | Notes |
-| --- | --- | --- | --- | --- | --- |
-| 1. Problem framing refinement |  |  |  |  |  |
-| 2. Related work consolidation |  |  |  |  |  |
-| 3. Method framing draft |  |  |  |  |  |
-| 4. Data and graph design draft |  |  |  |  |  |
-| 5. Evaluation design draft |  |  |  |  |  |
-| 6. Full manuscript integration |  |  |  |  |  |
+| Step | Owner | Time | Cost | PDF |
+| --- | --- | --- | --- | --- |
+| 1. Problem framing refinement | Human |  |  |  |
+| 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf) |
+| 3. Method framing draft | Codex |  |  |  |
+| 4. Data and graph design draft | Codex |  |  |  |
+| 5. Evaluation design draft | Codex |  |  |  |
+| 6. Full manuscript integration | Codex |  |  |  |
