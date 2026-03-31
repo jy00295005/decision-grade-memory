@@ -18,6 +18,17 @@ This repository is intended to function both as a working research archive and a
 - GitHub Pages: a lightweight landing page for the project overview, positioning, current status, and key research notes.
 - Presentation style: research-first, transparent, and evolving; not startup-style marketing.
 
+## Prompt library
+
+- `prompts/setup/`: repository setup prompts for initializing or restructuring the project workspace.
+- `prompts/literature_review/`: staged prompts for literature reconnaissance, pain-point review, AI-limit review, and research positioning.
+- `prompts/writing/`: drafting prompts for section-level writing and revision work.
+
+## Latest review artifact
+
+- Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
+- Note: first-day synthesis run, approximately `$0.50` total usage cost, completed in about `20 minutes`.
+
 ## Why this repo exists
 
 - Keep the paper draft organized from the start.
@@ -58,6 +69,17 @@ Literature review + outline design
 - `docs/index.md`: public landing page for project framing and navigation.
 - `docs/research_positioning.md`: research gap and positioning note.
 - `references/notes/`: working literature notes that can be linked selectively from the landing page.
+
+## Paper completion tracker
+
+| Step | Goal | Inputs | Planned output | Status | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1. Problem framing refinement |  |  |  |  |  |
+| 2. Related work consolidation |  |  |  |  |  |
+| 3. Method framing draft |  |  |  |  |  |
+| 4. Data and graph design draft |  |  |  |  |  |
+| 5. Evaluation design draft |  |  |  |  |  |
+| 6. Full manuscript integration |  |  |  |  |  |
 
 ## How Codex should work in this repo
 

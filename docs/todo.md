@@ -13,6 +13,7 @@
 - [ ] Collect stronger empirical studies on informal SME decision processes, timely information access, and fragmented decision inputs
 - [ ] Validate the closest established terms for scenario-level business context, especially episodic memory, workflow memory, case-based reasoning, and decision traceability
 - [ ] Choose the narrowest defensible positioning: readiness gap, traceability gap, or episode-level context reconstruction gap
+- [ ] Refine the review-analysis article into a citation-tight related-work narrative with a final source audit
 - [ ] Draft introduction
 - [ ] Draft related work
 - [ ] Draft method skeleton

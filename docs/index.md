@@ -14,6 +14,13 @@ The project asks a narrow question:
 
 How should AI systems support SME decision-making when decisions are weakly structured, constraint-heavy, and distributed across incomplete records, prior episodes, and changing business conditions?
 
+## Today's review output
+
+- [Review PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf)
+- Day 1 result: one review-analysis article completed from the initial note base.
+- Approximate effort: `20 minutes`
+- Approximate cost: `$0.50`
+
 ## Current research position
 
 - The SME literature is strong on uncertainty, working-capital pressure, limited analytical capacity, and owner-manager-centered decisions.
@@ -34,6 +41,12 @@ See the full positioning note here:
 - [Literature Review Round 1](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/sme_ai_decision_review_round1.md)
 - [SME Decision Pain Points](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/sme_decision_pain_points.md)
 - [AI Limits for SME Decision Support](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/ai_limits_for_sme_decision_support.md)
+
+## Prompt paths
+
+- Setup prompts: [prompts/setup/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/setup)
+- Literature review prompts: [prompts/literature_review/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/literature_review)
+- Drafting prompts: [prompts/writing/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/writing)
 
 ## Why GitHub Pages
 
@@ -60,3 +73,14 @@ Literature review, problem framing, and research positioning.
 1. Tighten the terminology around `scenario memory`, `episodic memory`, `workflow memory`, and `decision traceability`.
 2. Expand direct evidence on SME decision episodes and information use.
 3. Translate the positioning note into a sharper introduction and related-work structure.
+
+## Paper completion steps
+
+| Step | Goal | Inputs | Planned output | Status | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1. Problem framing refinement |  |  |  |  |  |
+| 2. Related work consolidation |  |  |  |  |  |
+| 3. Method framing draft |  |  |  |  |  |
+| 4. Data and graph design draft |  |  |  |  |  |
+| 5. Evaluation design draft |  |  |  |  |  |
+| 6. Full manuscript integration |  |  |  |  |  |
