@@ -6,7 +6,19 @@ This repository is a minimal Markdown-first workspace for developing an early-st
 
 This repository is intended to function both as a working research archive and as a public-facing project page on GitHub and GitHub Pages. The public presentation should emphasize research framing, evolving notes, and transparent progress rather than polished product claims.
 
-## Latest review artifact
+
+## Paper completion tracker
+
+| Step | Owner | Time | Cost | PDF |
+| --- | --- | --- | --- | --- |
+| 1. Problem framing refinement | Human |  |  |  |
+| 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](output/pdf/sme_decision_support_review_export.pdf) |
+| 3. Method framing draft | Codex |  |  |  |
+| 4. Data and graph design draft | Codex |  |  |  |
+| 5. Evaluation design draft | Codex |  |  |  |
+| 6. Full manuscript integration | Codex |  |  |  |
+
+## Day 1 Literature Review
 
 - Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
 - First-day synthesis run: approximately `$0.50` total usage cost, completed in about `20 minutes`
@@ -64,16 +76,6 @@ Literature review + outline design
 - `docs/research_positioning.md`: research gap and positioning note.
 - `references/notes/`: working literature notes that can be linked selectively from the landing page.
 
-## Paper completion tracker
-
-| Step | Owner | Time | Cost | PDF |
-| --- | --- | --- | --- | --- |
-| 1. Problem framing refinement | Human |  |  |  |
-| 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](output/pdf/sme_decision_support_review_export.pdf) |
-| 3. Method framing draft | Codex |  |  |  |
-| 4. Data and graph design draft | Codex |  |  |  |
-| 5. Evaluation design draft | Codex |  |  |  |
-| 6. Full manuscript integration | Codex |  |  |  |
 
 ## Prompt library
 
