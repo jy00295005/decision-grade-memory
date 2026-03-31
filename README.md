@@ -6,6 +6,11 @@ This repository is a minimal Markdown-first workspace for developing an early-st
 
 This repository is intended to function both as a working research archive and as a public-facing project page on GitHub and GitHub Pages. The public presentation should emphasize research framing, evolving notes, and transparent progress rather than polished product claims.
 
+## Latest review artifact
+
+- Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
+- First-day synthesis run: approximately `$0.50` total usage cost, completed in about `20 minutes`
+
 ## Project Identity
 
 - Repository name: `decision-grade-memory`
@@ -17,17 +22,6 @@ This repository is intended to function both as a working research archive and a
 - GitHub repository: the canonical home for version history, notes, manuscript structure, and research updates.
 - GitHub Pages: a lightweight landing page for the project overview, positioning, current status, and key research notes.
 - Presentation style: research-first, transparent, and evolving; not startup-style marketing.
-
-## Prompt library
-
-- `prompts/setup/`: repository setup prompts for initializing or restructuring the project workspace.
-- `prompts/literature_review/`: staged prompts for literature reconnaissance, pain-point review, AI-limit review, and research positioning.
-- `prompts/writing/`: drafting prompts for section-level writing and revision work.
-
-## Latest review artifact
-
-- Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
-- Note: first-day synthesis run, approximately `$0.50` total usage cost, completed in about `20 minutes`.
 
 ## Why this repo exists
 
@@ -72,14 +66,20 @@ Literature review + outline design
 
 ## Paper completion tracker
 
-| Step | Goal | Inputs | Planned output | Status | Notes |
-| --- | --- | --- | --- | --- | --- |
-| 1. Problem framing refinement |  |  |  |  |  |
-| 2. Related work consolidation |  |  |  |  |  |
-| 3. Method framing draft |  |  |  |  |  |
-| 4. Data and graph design draft |  |  |  |  |  |
-| 5. Evaluation design draft |  |  |  |  |  |
-| 6. Full manuscript integration |  |  |  |  |  |
+| Step | Owner | Time | Cost | PDF |
+| --- | --- | --- | --- | --- |
+| 1. Problem framing refinement | Human |  |  |  |
+| 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](output/pdf/sme_decision_support_review_export.pdf) |
+| 3. Method framing draft | Codex |  |  |  |
+| 4. Data and graph design draft | Codex |  |  |  |
+| 5. Evaluation design draft | Codex |  |  |  |
+| 6. Full manuscript integration | Codex |  |  |  |
+
+## Prompt library
+
+- `prompts/setup/`: project setup and repository initialization prompts.
+- `prompts/literature_review/`: staged prompts for literature reconnaissance, pain-point review, AI-limit review, and research positioning.
+- `prompts/writing/`: section drafting and revision prompts for manuscript work.
 
 ## How Codex should work in this repo
 
