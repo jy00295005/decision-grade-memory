@@ -23,6 +23,7 @@ How should AI systems support SME decision-making when decisions are weakly stru
 - [Research positioning](research_positioning.md)
 - [Series](series.md)
 - [Prompt library](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts)
+- [Skills usage](skills_usage.md)
 - [Literature notes index](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/README.md)
 
 ## Latest outputs
@@ -67,6 +68,17 @@ See the full positioning note here:
 - Method prompts: [prompts/03_method/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/03_method)
 - Figure prompts: [prompts/nanobanana/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/nanobanana)
 - Drafting prompts: [prompts/writing/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/writing)
+
+## Custom skills
+
+- Installed skill usage notes: [skills_usage.md](skills_usage.md)
+- Project-local custom skill prefix: `dgm-`
+- Current custom skills:
+  - `dgm-research-positioning`
+  - `dgm-citation-audit`
+  - `dgm-method-design`
+- Role:
+  - these custom skills package the reusable parts of the paper workflow for research positioning, citation audit, and Method-section design
 
 ## Why GitHub Pages
 

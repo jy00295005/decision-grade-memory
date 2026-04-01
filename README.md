@@ -15,6 +15,7 @@ This repository is intended to function both as a working research archive and a
 - [Outputs](docs/outputs.md)
 - [Research log](docs/research_log.md)
 - [Prompt library](prompts/README.md)
+- [Skills usage](docs/skills_usage.md)
 
 ## Latest artifacts
 
@@ -100,6 +101,19 @@ Literature review + outline design
 - `prompts/nanobanana/`: reusable image-generation prompts for Method figures.
 - `prompts/writing/`: section drafting and revision prompts for manuscript work.
 - [Prompt index](prompts/README.md): recommended order and usage notes.
+
+## Custom Codex skills
+
+- Installed research workflow skills: see [docs/skills_usage.md](docs/skills_usage.md)
+- Project-local custom skill prefix: `dgm-`
+- Current custom skills:
+  - `dgm-research-positioning`
+  - `dgm-citation-audit`
+  - `dgm-method-design`
+- Important:
+  - these custom skills currently live under local `.codex/skills/`
+  - they support research positioning, citation audit, and Method-section design for this paper workflow
+  - they are local Codex assets rather than tracked repository files by default
 
 ## How Codex should work in this repo
 
