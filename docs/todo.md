@@ -17,3 +17,4 @@
 - [ ] Draft introduction
 - [ ] Draft related work
 - [ ] Draft method skeleton
+- [ ] Convert the Method section into a citation-backed architecture narrative by mapping each design block to either implementation evidence (`prosperpath`) or formal literature support
