@@ -9,14 +9,17 @@ This repository is intended to function both as a working research archive and a
 ## Start here
 
 - [GitHub Pages](https://jy00295005.github.io/decision-grade-memory/)
+- [Latest method PDF](output/pdfs/section_3_method.pdf)
 - [Latest review PDF](output/pdf/sme_decision_support_review_export.pdf)
 - [Research positioning](docs/research_positioning.md)
 - [Outputs](docs/outputs.md)
 - [Research log](docs/research_log.md)
 - [Prompt library](prompts/README.md)
 
-## Latest review artifact
+## Latest artifacts
 
+- Day 2 method output: [Section 3 Method PDF](output/pdfs/section_3_method.pdf)
+- Method framing draft: approximately `2 hours` total effort, approximately `$1.00` total usage cost
 - Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
 - First-day synthesis run: approximately `$0.50` total usage cost, completed in about `20 minutes`
 
@@ -26,7 +29,7 @@ This repository is intended to function both as a working research archive and a
 | --- | --- | --- | --- | --- |
 | 1. Problem framing refinement | Human |  |  |  |
 | 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](output/pdf/sme_decision_support_review_export.pdf) |
-| 3. Method framing draft | Codex |  |  |  |
+| 3. Method framing draft | Codex | 2 hours | $1.00 | [Method PDF](output/pdfs/section_3_method.pdf) |
 | 4. Data and graph design draft | Codex |  |  |  |
 | 5. Evaluation design draft | Codex |  |  |  |
 | 6. Full manuscript integration | Codex |  |  |  |
@@ -93,6 +96,8 @@ Literature review + outline design
 
 - `prompts/setup/`: project setup and repository initialization prompts.
 - `prompts/literature_review/`: staged prompts for literature reconnaissance, pain-point review, AI-limit review, and research positioning.
+- `prompts/03_method/`: distilled prompts for substrate analysis, scenario-layer design, method mapping, method drafting, and compression/export.
+- `prompts/nanobanana/`: reusable image-generation prompts for Method figures.
 - `prompts/writing/`: section drafting and revision prompts for manuscript work.
 - [Prompt index](prompts/README.md): recommended order and usage notes.
 
@@ -115,11 +120,11 @@ Literature review + outline design
 
 ## Next 5 tasks
 
-1. Finalize the central problem definition and scope boundaries.
-2. Collect and organize 15-20 core references in `references/library.bib` and `references/notes/`.
-3. Refine the research questions in `docs/rq.md`.
-4. Expand the introduction and related work section skeletons with evidence-backed notes.
-5. Clarify the proposed graph schema and signal categories in the method materials.
+1. Tighten the transition from related work into the compressed Section 3 method framing.
+2. Draft the data and graph design section so it aligns with the scenario-memory method claim.
+3. Add formal citation anchors directly into the method chapter where reviewer expectations are highest.
+4. Refine the introduction so the Day 1 review PDF and Day 2 method PDF connect as one paper narrative.
+5. Prepare the next export-ready chapter artifact after data/graph design is stable.
 
 ## Not in scope for MVP
 

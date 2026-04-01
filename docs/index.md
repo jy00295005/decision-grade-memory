@@ -16,6 +16,7 @@ How should AI systems support SME decision-making when decisions are weakly stru
 
 ## Start here
 
+- [Latest method PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdfs/section_3_method.pdf)
 - [Latest review PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf)
 - [Outputs](outputs.md)
 - [Research log](research_log.md)
@@ -24,8 +25,12 @@ How should AI systems support SME decision-making when decisions are weakly stru
 - [Prompt library](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts)
 - [Literature notes index](https://github.com/jy00295005/decision-grade-memory/blob/main/references/notes/README.md)
 
-## Today's review output
+## Latest outputs
 
+- [Method PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdfs/section_3_method.pdf)
+- Day 2 result: Section 3 / Method drafted, compressed, and exported as a paper-ready chapter PDF.
+- Approximate effort: `2 hours`
+- Approximate cost: `$1.00`
 - [Review PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf)
 - Day 1 result: one review-analysis article completed from the initial note base.
 - Approximate effort: `20 minutes`
@@ -59,6 +64,8 @@ See the full positioning note here:
 
 - Setup prompts: [prompts/setup/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/setup)
 - Literature review prompts: [prompts/literature_review/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/literature_review)
+- Method prompts: [prompts/03_method/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/03_method)
+- Figure prompts: [prompts/nanobanana/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/nanobanana)
 - Drafting prompts: [prompts/writing/](https://github.com/jy00295005/decision-grade-memory/tree/main/prompts/writing)
 
 ## Why GitHub Pages
@@ -83,9 +90,9 @@ Literature review, problem framing, and research positioning.
 
 ## Next likely milestones
 
-1. Tighten the terminology around `scenario memory`, `episodic memory`, `workflow memory`, and `decision traceability`.
-2. Expand direct evidence on SME decision episodes and information use.
-3. Translate the positioning note into a sharper introduction and related-work structure.
+1. Translate the method chapter into a matching data-and-graph design section.
+2. Tighten Section 2 -> Section 3 transitions so the paper reads as one argument rather than two artifacts.
+3. Expand direct evidence on SME decision episodes and information use.
 
 ## Research progress tracker
 
@@ -93,7 +100,7 @@ Literature review, problem framing, and research positioning.
 | --- | --- | --- | --- | --- |
 | 1. Problem framing refinement | Human |  |  |  |
 | 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf) |
-| 3. Method framing draft | Codex |  |  |  |
+| 3. Method framing draft | Codex | 2 hours | $1.00 | [Method PDF](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdfs/section_3_method.pdf) |
 | 4. Data and graph design draft | Codex |  |  |  |
 | 5. Evaluation design draft | Codex |  |  |  |
 | 6. Full manuscript integration | Codex |  |  |  |
