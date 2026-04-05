@@ -1,0 +1,4 @@
+interface:
+  display_name: "DGM MD to PDF Chapter Polisher"
+  short_description: "Merge Markdown chapter notes into polished academic draft and PDF"
+  default_prompt: "Use $dgm-md-to-pdf-chapter-polisher to turn these Markdown source files for one chapter into a polished journal-style chapter draft and export a single-chapter PDF."

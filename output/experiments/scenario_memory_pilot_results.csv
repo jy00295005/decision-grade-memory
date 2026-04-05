@@ -1,0 +1,7 @@
+case_id,case_title,strategy,total_nodes,total_edges,context_completeness,evidence_traceability,missing_information_awareness,decision_usefulness,notes
+supplier_moq_cash,Supplier MOQ pressure under cash-flow constraints,node_rrf,8,0,2,1,1,3,"Relevant recommendation fragments are present, but the package lacks explicit linkage between challenge, cash constraint, and outcome."
+supplier_moq_cash,Supplier MOQ pressure under cash-flow constraints,combined_rrf,8,8,4,4,2,4,"Scenario-style package surfaces trigger, response pattern, cash-protection goal, and achieved outcome, though some retrieved edges remain noisy."
+rota_service,Weekend staffing constraint without hurting service,node_rrf,8,0,2,1,1,3,"Retrieval surfaces relevant recommendations but under-specifies service constraint, staffing context, and observed outcome."
+rota_service,Weekend staffing constraint without hurting service,combined_rrf,8,8,4,4,2,4,"Scenario-style package makes the staffing problem, proposed action, and achieved reduction in rota conflicts visible in one context bundle."
+sales_recovery,Sales dip recovery under attribution uncertainty,node_rrf,8,0,3,1,2,3,"Baseline retrieval finds the main goal and some relevant entities, but the attribution problem and evidence chain remain weak."
+sales_recovery,Sales dip recovery under attribution uncertainty,combined_rrf,8,8,5,4,2,4,"Scenario-style package links crisis, marketing channel evidence, and action idea more directly, producing a more decision-grade context."

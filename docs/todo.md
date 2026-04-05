@@ -18,3 +18,4 @@
 - [ ] Draft related work
 - [ ] Draft method skeleton
 - [ ] Convert the Method section into a citation-backed architecture narrative by mapping each design block to either implementation evidence (`prosperpath`) or formal literature support
+- [ ] Compress the Section 4 evaluation-design notes into a paper-ready experiments section after the next `15-30` case round is defined

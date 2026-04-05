@@ -9,6 +9,7 @@ This repository is intended to function both as a working research archive and a
 ## Start here
 
 - [GitHub Pages](https://jy00295005.github.io/decision-grade-memory/)
+- [Latest evaluation PDF](output/pdfs/04_evaluation_design.pdf)
 - [Latest method PDF](output/pdfs/section_3_method.pdf)
 - [Latest review PDF](output/pdf/sme_decision_support_review_export.pdf)
 - [Research positioning](docs/research_positioning.md)
@@ -19,6 +20,8 @@ This repository is intended to function both as a working research archive and a
 
 ## Latest artifacts
 
+- Day 3 evaluation output: [Section 4 Evaluation Design PDF](output/pdfs/04_evaluation_design.pdf)
+- Day 3 workflow update: tracked paper-skill pack and evaluation-design prompt pack added to the repository
 - Day 2 method output: [Section 3 Method PDF](output/pdfs/section_3_method.pdf)
 - Method framing draft: approximately `2 hours` total effort, approximately `$1.00` total usage cost
 - Day 1 review output: [SME decision support review PDF](output/pdf/sme_decision_support_review_export.pdf)
@@ -32,7 +35,7 @@ This repository is intended to function both as a working research archive and a
 | 2. Related work consolidation | Codex | 30 mins | $0.50 | [Review PDF](output/pdf/sme_decision_support_review_export.pdf) |
 | 3. Method framing draft | Codex | 2 hours | $1.00 | [Method PDF](output/pdfs/section_3_method.pdf) |
 | 4. Data and graph design draft | Codex |  |  |  |
-| 5. Evaluation design draft | Codex |  |  |  |
+| 5. Evaluation design draft | Codex |  |  | [Evaluation PDF](output/pdfs/04_evaluation_design.pdf) |
 | 6. Full manuscript integration | Codex |  |  |  |
 
 ## Project Identity
@@ -62,7 +65,7 @@ This repository is intended to function both as a working research archive and a
 
 ## Current stage
 
-Literature review + outline design
+Review-analysis complete, Method drafted, and Section 4 evaluation design drafted as modular notes plus chapter export
 
 ## Main manuscript entry
 
@@ -98,6 +101,7 @@ Literature review + outline design
 - `prompts/setup/`: project setup and repository initialization prompts.
 - `prompts/literature_review/`: staged prompts for literature reconnaissance, pain-point review, AI-limit review, and research positioning.
 - `prompts/03_method/`: distilled prompts for substrate analysis, scenario-layer design, method mapping, method drafting, and compression/export.
+- `prompts/evaluation_design/`: prompts for modular Section 4 design and chapter-level export.
 - `prompts/nanobanana/`: reusable image-generation prompts for Method figures.
 - `prompts/writing/`: section drafting and revision prompts for manuscript work.
 - [Prompt index](prompts/README.md): recommended order and usage notes.
@@ -110,10 +114,20 @@ Literature review + outline design
   - `dgm-research-positioning`
   - `dgm-citation-audit`
   - `dgm-method-design`
+  - `dgm-md-to-pdf-chapter-polisher`
 - Important:
-  - these custom skills currently live under local `.codex/skills/`
-  - they support research positioning, citation audit, and Method-section design for this paper workflow
-  - they are local Codex assets rather than tracked repository files by default
+  - active installations still live under local `.codex/skills/`
+  - tracked shareable copies now live under `codex/paper_skills/custom/`
+  - zip packages now live under `codex/skill_packages/`
+  - they support research positioning, citation audit, Method-section design, and chapter-level Markdown-to-PDF export
+
+## Today in the repo
+
+- Added a tracked paper-skill pack under `codex/paper_skills/` so collaborators can download the `dgm-*` workflow skills from the repository.
+- Added zip packages for the custom paper workflow skills under `codex/skill_packages/`.
+- Added a new Section 4 prompt pack under `prompts/evaluation_design/`.
+- Expanded prompt index coverage so setup, literature review, method, evaluation design, figures, and writing each have clearer entry points.
+- Exported a paper-style Section 4 chapter PDF to `output/pdfs/04_evaluation_design.pdf`.
 
 ## How Codex should work in this repo
 
@@ -136,9 +150,9 @@ Literature review + outline design
 
 1. Tighten the transition from related work into the compressed Section 3 method framing.
 2. Draft the data and graph design section so it aligns with the scenario-memory method claim.
-3. Add formal citation anchors directly into the method chapter where reviewer expectations are highest.
-4. Refine the introduction so the Day 1 review PDF and Day 2 method PDF connect as one paper narrative.
-5. Prepare the next export-ready chapter artifact after data/graph design is stable.
+3. Add formal citation anchors directly into the method and evaluation chapters where reviewer expectations are highest.
+4. Refine the introduction so the review, method, and evaluation chapter artifacts connect as one paper narrative.
+5. Prepare the next export-ready chapter artifact after the data/graph design section is stable.
 
 ## Not in scope for MVP
 
