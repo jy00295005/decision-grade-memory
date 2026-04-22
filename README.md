@@ -9,6 +9,7 @@ This repository is intended to function both as a working research archive and a
 ## Start here
 
 - [GitHub Pages](https://jy00295005.github.io/decision-grade-memory/)
+- [Latest experiments PDF](output/pdfs/05_experiments.pdf)
 - [Latest evaluation PDF](output/pdfs/04_evaluation_design.pdf)
 - [Latest method PDF](output/pdfs/section_3_method.pdf)
 - [Latest review PDF](output/pdf/sme_decision_support_review_export.pdf)
@@ -20,6 +21,8 @@ This repository is intended to function both as a working research archive and a
 
 ## Latest artifacts
 
+- Day 4 experiments output: [Section 5 Experiments PDF](output/pdfs/05_experiments.pdf)
+- Day 4 chapter assets: `manuscript/05_experiments/` now contains modular experiment drafts plus figure-backed section assembly
 - Day 3 evaluation output: [Section 4 Evaluation Design PDF](output/pdfs/04_evaluation_design.pdf)
 - Day 3 workflow update: tracked paper-skill pack and evaluation-design prompt pack added to the repository
 - Day 2 method output: [Section 3 Method PDF](output/pdfs/section_3_method.pdf)
@@ -65,7 +68,19 @@ This repository is intended to function both as a working research archive and a
 
 ## Current stage
 
-Review-analysis complete, Method drafted, and Section 4 evaluation design drafted as modular notes plus chapter export
+Review-analysis complete, Method drafted, Section 4 evaluation design exported, and Section 5 experiments drafted and exported as a single chapter PDF
+
+## Public story so far
+
+If a new reader arrives from the next post, the short version is:
+
+- Day 1: literature review and problem framing, focused on SME decision pain points and current AI support limits.
+- Day 2: Method chapter drafted around a scenario memory framework for decision-grade context.
+- Day 3: Evaluation design drafted to compare fragment-oriented retrieval with scenario-oriented context construction.
+- Day 4: Experiments chapter drafted around targeted retest design, validation KG, and bounded `DecisionEpisode` results.
+- Current direction: keep the paper modular, chapter-by-chapter, and exportable as PDF instead of trying to write the whole paper at once.
+
+This is the main narrative the next post should carry forward.
 
 ## Main manuscript entry
 

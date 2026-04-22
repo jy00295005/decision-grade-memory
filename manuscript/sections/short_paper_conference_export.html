@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scenario Memory for LLM-Based SME Decision Support: DecisionEpisode as the Core Unit of Bounded Context Construction</title>
+  <style>
+    @page { size: A4; margin: 2cm 2cm 2.2cm 2cm; }
+    body { font-family: Georgia, 'Times New Roman', serif; color: #111; line-height: 1.42; font-size: 11.5pt; }
+    h1 { font-size: 20pt; text-align: center; margin: 0 0 18pt 0; }
+    h2 { font-size: 15pt; margin: 20pt 0 10pt 0; }
+    h3 { font-size: 12.5pt; margin: 14pt 0 8pt 0; }
+    p { margin: 0 0 9pt 0; text-align: justify; }
+    .equation { text-align: center; font-style: italic; font-size: 12pt; margin: 10pt 0 12pt 0; }
+    img { max-width: 100%; display: block; margin: 12pt auto 6pt auto; }
+    em { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin: 10pt 0 12pt 0; font-size: 10pt; }
+    th, td { border: 1px solid #999; padding: 5px 6px; vertical-align: top; }
+    th { background: #f2f2f2; }
+    ul { margin: 6pt 0 10pt 20pt; }
+    </style>
+</head>
+<body>
+<h1>Scenario Memory for LLM-Based SME Decision Support: DecisionEpisode as the Core Unit of Bounded Context Construction</h1>
+<h2>Abstract</h2>
+<p>Large language model (LLM) systems are increasingly proposed as practical copilots for SME growth and operational decision support, but a persistent bottleneck is that current pipelines are better at retrieval, summarization, and recommendation than at preserving the bounded decision situation in which an SME action must actually be chosen. For owner-managers operating under cash pressure, staffing constraints, supplier friction, and uncertain demand, relevant information is often distributed across records, recommendations, and partial outcomes. As a result, an LLM may surface useful fragments while still failing to preserve the specific decision context needed for action.</p>
+<p>This paper argues that the missing step is a stronger memory organization for decision support. We use the term scenario memory to denote the framework-level organization of business context around bounded decision situations rather than isolated fragments or weakly connected recall. Within that framework, we introduce DecisionEpisode as the core representational unit of bounded context construction. DecisionEpisode binds trigger, goal, constraints, actions, outcomes, and evidence before query-time reasoning. The contribution is therefore not a larger graph and not another retriever. It is a scenario-memory account of SME support in which usefulness depends on whether the system can preserve the right decision episode rather than merely surface semantically related information.</p>
+<p>We evaluate this idea in a prototype setting using a local curated corpus of SME-style decision situations. The strongest evidence comes from a targeted stress-test designed to expose contamination-prone cases where richer retrieval is likely to mix focal and adjacent material. On that set, DecisionEpisode + strict projection outperformed the strongest non-episode graph baseline, combined_rrf, on completeness, traceability, usefulness, and coherence, with pairwise outcomes of 6 wins, 1 loss, and 2 ties. The broader curated regression remained mixed and therefore does not support universal superiority. The current evidence is best read as prototype-level support for a narrow but consequential claim: for LLM-based SME decision support, scenario memory becomes useful when the system can preserve the right decision episode rather than merely retrieve richer fragments.</p>
+<h2>1. Introduction</h2>
+<p>LLM systems are increasingly proposed as practical copilots for SME growth, operations, and decision support. Yet the bottleneck is no longer only whether the model can retrieve or summarize relevant information. The harder problem is whether the system can preserve the bounded business situation in which an SME action must actually be chosen. This requirement is particularly sharp in SMEs, where owner-managers often make consequential short-horizon decisions without the specialized analytical infrastructure available in larger firms [Smith et al., 1988; Salles, 2006; Wong et al., 2018; Cowden et al., 2022]. A supplier minimum-order decision, a staffing adjustment, or a sales-recovery intervention may depend on traces scattered across operational records, recommendations, prior actions, and incomplete outcomes. In such settings, the practical failure mode is often not missing information in the absolute sense. It is that relevant information does not arrive as a bounded decision context.</p>
+<p>This is where current AI support remains thinner than its interface suggests. Retrieval, summarization, and graph-backed recall can surface useful evidence, but they do not necessarily preserve the unit that matters most for action: the specific decision situation facing the firm. A graph can retain entities, relations, provenance, and temporal traces across heterogeneous business materials, which is valuable for memory and traceability. But graph memory is still not a decision unit. It does not by itself specify which subset of connected information should count as the focal business episode. If that boundary remains implicit, the user or reasoning layer must reconstruct it on demand. The result may be relevant, yet still decision-incomplete. More broadly, the AI-for-SME review literature is stronger on adoption, bounded functional use, and information access than on reconstructing decision-grade context for weakly structured business choices [Hansen and Bogh, 2021; Oldemeyer et al., 2025; Schwaeke et al., 2025].</p>
+<p>This paper addresses that representational gap. It asks what kind of memory organization should sit between graph-based business memory and LLM reasoning when the target is not document retrieval, but decision support. The framework-level answer proposed here is scenario memory: a way of organizing business context around bounded decision situations. Within that framework, the key representational unit is DecisionEpisode, an explicit and bounded representation of one business decision situation. The argument is intentionally narrow. We do not claim a mature end-to-end business copilot, universal benchmark superiority, or validated business impact. We claim instead that, in SME-oriented vertical AI, the missing step is often not more retrieval but a better organizational layer for bounded context construction.</p>
+<p><img alt="Figure 1. Fragment retrieval, scenario memory, and evidence-backed reasoning." src="../figures/fig1_fragment_vs_scenario.png"></p>
+<p><em>Figure 1. Fragment retrieval, scenario memory, and evidence-backed reasoning. The figure contrasts fragment-oriented support with scenario-oriented context construction and highlights the role of explicit evidence in decision-grade reasoning.</em></p>
+<p>We therefore use scenario memory as the name of the overall framework and DecisionEpisode as its core unit. A DecisionEpisode is a bounded representation of a business situation that links the focal trigger, goal, constraints, candidate or enacted actions, outcomes, and supporting evidence. The purpose is to make retrieval subordinate to a more decision-appropriate unit of organization. In the proposed framework, graph memory stores distributed facts and relations; scenario memory specifies how those materials should be organized around a decision situation; DecisionEpisode instantiates that organization for one focal case; and a query-time projection then produces a smaller decision subgraph for reasoning.</p>
+<p>The empirical contribution is correspondingly narrow. We do not evaluate business impact, production readiness, or broad benchmark performance. Instead, we test whether explicit episode organization helps on local contamination-prone decision situations where richer retrieval tends to mix focal and adjacent material. The resulting evidence is prototype-level and bounded, but it is sufficient to support a short-paper claim about when episode organization appears helpful and why it matters in vertical business AI settings.</p>
+<p>The paper makes three contributions. First, it reframes the central challenge in SME-oriented AI support as bounded decision-context construction rather than retrieval alone and proposes scenario memory as the relevant framework for that problem. Second, it introduces DecisionEpisode as the core unit within that framework for constructing a decision-centered context package from graph memory. Third, it provides prototype-level evidence that DecisionEpisode + strict projection can improve coherence, traceability, and decision usefulness on difficult local cases, while also showing clearly where the present evidence stops.</p>
+<h2>2. Problem Positioning</h2>
+<p>The project is positioned against two insufficient extremes. The first extreme is fragment-oriented retrieval. In this pattern, the system can surface relevant nodes, passages, or relation facts, but the challenge, action, goal, and outcome structure of the focal decision still has to be reconstructed afterwards. This is often adequate for simple lookup, but it is weaker for decisions that depend on chronology, competing actions, or constraints that must be interpreted together. This concern is consistent with adjacent decision-support work arguing that more data access does not automatically produce better structured decision support or clearer reasoning paths [Phillips-Wren et al., 2021; Doumbouya et al., 2015].</p>
+<p>The second extreme is to assume that graph memory alone solves this problem. Graphs are well suited to storing business entities, states, events, and links across heterogeneous inputs. However, a graph can preserve many relevant links while still leaving the focal decision boundary implicit. In the setting studied here, relation-rich retrieval may therefore remain vulnerable to contamination: it returns material that is relevant in a broad semantic sense but not bounded to the decision situation the user is actually trying to resolve. This paper treats that failure mode as especially relevant for SMEs because information requirements are often hard to specify in advance and decision processes remain comparatively informal and compressed [Gibson, 1992; Salles, 2006; Wong et al., 2018].</p>
+<p>The present paper argues for a middle layer. The key gap is not only missing information, and it is not only missing relations. The gap is the absence of an explicit organizational structure that says which graph elements belong together as one decision situation. We refer to that framework-level structure as scenario memory, and to its core representational unit as DecisionEpisode. This distinction matters because the paper is not only proposing a single data object. It is proposing a broader memory view in which graph traces must first be organized around a bounded situation before reasoning begins. This is especially important when multiple actions share similar triggers, when adjacent episodes overlap, or when the same business problem can support different goals.</p>
+<p>The paper therefore adopts a restrained position. It does not claim that scenario memory or DecisionEpisode establishes a new universal memory standard, nor that they replace retrieval, case reasoning, or graph-based business intelligence. The narrower claim is that scenario memory can serve as a useful framework for bounded decision support, and that DecisionEpisode is the key organizational unit within that framework.</p>
+<h2>3. Method</h2>
+<h3>3.1 Overview</h3>
+<p>The method organizes scenario memory for decision support as a layered path from memory to reasoning:</p>
+<p>knowledge graph → DecisionEpisode → strict projection → reasoning</p>
+<p>Each layer answers a different question. The knowledge graph stores business entities, relations, signals, and evidence traces in distributed form. The scenario-memory layer determines how these materials are organized around bounded decision situations. Within that layer, DecisionEpisode identifies which subset of the available material belongs to one focal decision situation and makes that boundary explicit enough for downstream use. Strict projection then selects the episode-linked subset needed for the current task. The reasoning layer operates on this bounded view rather than on loosely assembled fragments.</p>
+<p><img alt="Figure 2. Overall framework for decision-grade SME context construction." src="../figures/fig2_framework_overview.png"></p>
+<p><em>Figure 2. Overall framework for decision-grade SME context construction. Heterogeneous business inputs are organized through graph-based business memory, a scenario memory layer, a decision subgraph, and an LLM reasoning layer.</em></p>
+<h3>3.2 DecisionEpisode within scenario memory</h3>
+<p>The framework proposed in this paper is scenario memory, but its operational core is the DecisionEpisode. The minimum representational unit is therefore not the graph fragment and not the full memory store. It is the bounded decision episode. In this paper, a DecisionEpisode is a bounded business situation in which an actor pursues a goal under identifiable constraints, responds to a trigger or challenge, considers or takes an action, and interprets partial outcomes against supporting evidence and time.</p>
+<p>At a compact formal level, the episode can be written as:</p>
+<div class="equation">E = (A, G, C, T, X, O, V, τ)</div>
+
+<p>where A denotes actor or business context, G goal, C constraints, T trigger, X action, O outcome, V evidence bundle, and τ temporal placement. This formulation is not intended as a full ontology. It specifies only the minimum structure needed to move from distributed graph traces toward decision-grade context construction.</p>
+<p>Three distinctions are important. First, a DecisionEpisode is not the knowledge graph itself. The graph stores what is known; the episode stores what counts as one coherent decision situation. Second, a DecisionEpisode is not just a richer retrieval bundle. It imposes a boundary over the retrieved material. Third, a DecisionEpisode is not the final reasoning view. It may contain more structure than is appropriate for one query and therefore still requires a later bounded projection.</p>
+<h3>3.3 Role of the graph substrate</h3>
+<p>The graph substrate remains necessary because SME-relevant context is distributed. The current project assumes a business memory substrate that can preserve challenge traces, recommendation and action traces, goal fragments, partial outcomes, and evidence references across heterogeneous local assets. This makes the graph the durable memory layer rather than the direct decision unit.</p>
+<p>That distinction matters because the graph can represent multiple partially overlapping business situations at once. A supplier response, a staffing conflict, and a sales recovery intervention may all be locally connected through shared actors, time windows, or business objects. Retrieval can therefore return useful but insufficiently bounded context. The method treats this as an organizational problem rather than as a failure of graph representation itself.</p>
+<h3>3.4 Strict projection</h3>
+<p>The method-facing experimental condition uses DecisionEpisode + strict projection. In this step, the system constructs an episode from the same evidence bundle available to the non-episode baseline, then projects only the slot-linked material needed for the current decision query. The projection is intentionally selective. It keeps aligned challenge-action-goal-outcome traces and drops distractor actions, adjacent episode evidence, and peripheral benefits that do not directly support the focal decision path.</p>
+<p>Operationally, the current projection logic follows four simple rules. First, it starts from the candidate evidence bundle attached to the focal decision situation rather than from the full retrieved neighborhood. Second, it retains only material linked to at least one focal episode slot such as trigger, constraint, action, goal, outcome, or supporting evidence. Third, it preserves paths that maintain challenge-action-goal-outcome consistency inside the focal case. Fourth, it discards nodes that may be semantically relevant in a broader sense but are not episode-aligned, including adjacent actions, peripheral benefits, or traces attached to a different goal path. In the present prototype, this step is primarily graph- and rule-driven rather than delegated to a separate learned classifier.</p>
+<p>This projection step is essential. Without it, the episode layer could collapse back into a broader relation-rich package. The method claim is therefore not only about creating an episode representation, but about using that representation to enforce a bounded reasoning view.</p>
+<p>The rule-based design also supports explainability. Because projection decisions are mediated through explicit slot-linking and graph-visible path constraints, the resulting context package carries a natural provenance chain: a reviewer can inspect why a given constraint, action, or evidence fragment was retained, and why a nearby distractor was filtered out. In that sense, strict projection is not only a filtering device. It is also a transparent decision-support utility for settings in which inspectability and auditability matter alongside boundedness.</p>
+<h2>4. Experimental Setup</h2>
+<h3>4.1 Evaluation objective</h3>
+<p>The evaluation tests a narrow question derived directly from the method claim: when the underlying business graph and query intent are held constant, does explicit episode organization produce a more bounded and decision-useful context package than fragment-oriented or relation-rich retrieval alone?</p>
+<p>This is a decision-context construction comparison, not a product benchmark. The study does not test business outcomes, deployment readiness, or broad enterprise performance. Its function is to evaluate whether an episode layer helps where retrieval is likely to blur decision boundaries. The question is not whether one condition has access to more information. The question is whether one organizational strategy makes the same information more decision-useful.</p>
+<p><img alt="Figure 4. Experimental comparison of fragment-oriented and scenario-oriented context construction." src="../figures/fig4.png"></p>
+<p><em>Figure 4. The same SME decision case and the same underlying information source are held constant, while the context construction strategy differs. This is the core comparison logic of the evaluation.</em></p>
+<h3>4.2 Data substrate and evaluation units</h3>
+<p>The evaluation uses a local curated validation corpus derived from a real SME-oriented AI application, but rewritten and sanitized for research use. The underlying materials originate from practical business-support interactions rather than from a synthetic benchmark designed from scratch. To preserve confidentiality, identifying details, firm-specific particulars, and directly traceable business content were removed or rewritten before use in this paper. The resulting corpus should therefore be read as privacy-safe, application-grounded mock data: it is not raw field data, but neither is it arbitrary toy text. Its purpose is to preserve the decision structure of realistic SME support situations while remaining suitable for paper-facing analysis.</p>
+<p>Operationally, the corpus is assembled from four kinds of artifacts: chat-like problem traces, recommendation outputs, graph-linked relation traces, and evidence references. Chat-like traces contribute the initial statement of the business problem. Recommendation outputs contribute candidate actions and action rationales. Relation traces link challenges, actions, goals, and partial outcomes in a graph-backed form. Evidence references preserve the support needed to later judge whether a retrieved or projected context package remains traceable. These materials are then mapped into a local validation knowledge graph whose nodes and edges represent challenge, constraint, action, goal, outcome, and evidence relations rather than full firm histories.</p>
+<p>Figure 6 illustrates this substrate on a bounded supplier MOQ example. The figure is intentionally small and decision-centered: it shows how a challenge node, several action candidates, goal nodes, a partial outcome, and evidence references are connected before episode construction. This is important for the paper because the proposed method does not construct DecisionEpisode from free text alone. It constructs it over a graph-backed local structure in which the core elements of the decision situation are already represented and can later be bounded more explicitly.</p>
+<p><img alt="Figure 6. Local validation KG fragment for a bounded SME decision situation." src="../figures/fig6_validation_kg_fragment.png"></p>
+<p><em>Figure 6. A local validation KG fragment for a bounded supplier MOQ decision situation. The graph is intentionally small and decision-centered, preserving the challenge-action-goal-outcome structure needed for later episode construction and traceability.</em></p>
+<p>The current evaluation unit is the decision situation rather than a fully mature ground-truth DecisionEpisode. This reflects the current state of the implementation. The paper therefore evaluates an inspectable prototype pipeline rather than a large-scale supervised extraction system. A decision situation is treated here as a bounded case consisting of a focal decision query, a recognizable business problem, graph-backed supporting traces, and one or more candidate action paths that can be compared across conditions.</p>
+<p>The corpus centers on three recurring task families:</p>
+<ul>
+<li>supplier minimum-order-quantity pressure under cash constraints</li>
+<li>weekend staffing conflict under service constraints</li>
+<li>sales decline recovery under attribution uncertainty</li>
+</ul>
+<p>These task families were selected because they require more than isolated fact retrieval. A usable context package should expose at least a trigger, a constraint, an action path, and a target state or outcome fragment. They also provide exactly the kind of overlap that makes bounded decision support difficult: adjacent actions may share a similar business trigger, goals may partially overlap, and semantically related evidence may belong to different decisions. This makes them appropriate for testing whether an explicit episode layer improves context construction rather than merely increasing retrieval richness.</p>
+<h3>4.3 Conditions and scoring</h3>
+<p>The broader comparison framework includes four conditions: text_rag, node_rrf, combined_rrf, and DecisionEpisode + strict projection. These names refer to increasingly structured ways of constructing the context package shown to the reasoning layer.</p>
+<p>text_rag is the plain text baseline. It retrieves relevant passages from the local textual materials without using the graph structure as the primary organizing device. Its purpose is to represent what an LLM-centered SME support workflow can do when it relies mainly on fragment retrieval from text.</p>
+<p>node_rrf is the graph-fragment baseline. It retrieves high-ranking graph nodes and associated local facts, but it does not impose a stronger decision boundary over them. In practical terms, it approximates a graph-enhanced retrieval workflow that can surface relevant business fragments while still leaving the user to reconstruct the decision situation.</p>
+<p>combined_rrf is the strongest non-episode graph baseline and the main comparator in this paper. It combines node-level retrieval with richer relation facts and graph-linked traces, so it usually exposes more of the surrounding decision structure than node_rrf. However, it remains retrieval-centered rather than episode-centered: it can return a richer neighborhood of relevant material without explicitly deciding which subset belongs to one bounded business episode.</p>
+<p>DecisionEpisode + strict projection is the method-facing condition. It first constructs an explicit DecisionEpisode object from the same local evidence bundle, then projects that episode into a strict query-time context view. The crucial difference is not access to more data, but access to a stronger organizational rule: only material that belongs to the focal episode should survive projection into the reasoning package.</p>
+<p>The main comparison in this paper is therefore between combined_rrf and DecisionEpisode + strict projection. This is the most informative comparison because combined_rrf is already a strong graph baseline. If DecisionEpisode only beat plain text or weak node retrieval, the result would be less meaningful. The paper's central question is whether an explicit decision episode can improve bounded context construction relative to the best non-episode graph condition currently available.</p>
+<p>Scoring uses four dimensions aligned with the method: slot_completeness, slot_traceability, situation_coherence, and decision_usefulness. These dimensions were chosen because the paper's claim is not simply that a better condition retrieves more information. The claim is that a better condition preserves the right decision situation in a form suitable for reasoning.</p>
+<p>slot_completeness asks whether the context package recovers the core elements of the decision situation: the trigger, relevant constraints, candidate or enacted actions, goal, and any visible outcome fragment. A package scores higher when these elements are jointly available rather than implied only indirectly.</p>
+<p>slot_traceability asks whether those recovered elements remain visibly grounded in graph-linked evidence. A package scores lower when it appears plausible but the relation between a recommendation, its supporting evidence, and the surrounding decision state is not inspectable.</p>
+<p>situation_coherence asks whether the package stays inside one decision situation rather than mixing in adjacent but non-focal material. This is especially important in the present paper because contamination by semantically nearby actions or goals is one of the main failure modes being tested.</p>
+<p>decision_usefulness asks whether the resulting package would actually support a decision discussion by a human reviewer. This is the most synthetic dimension: it depends on whether the package jointly recovers a credible action path, its operative constraints, and a sufficiently bounded goal structure to support action rather than generic commentary.</p>
+<p>In the current implementation, these dimensions are scored on a 1-5 scale using case-level human judgment. The scale is intentionally simple because the present study is still prototype-level. A score of 1 indicates a package that is largely fragmentary, weakly grounded, or visibly contaminated. A score of 3 indicates a package that is partially usable but still missing one or more critical decision elements or boundaries. A score of 5 indicates a package that is well-bounded, evidence-grounded, and directly usable for decision discussion. The rubric therefore prioritizes boundedness and inspectability over fluency or generic plausibility.</p>
+<p>The rationale for this design is practical: the paper is evaluating context quality under inspectable local conditions, not claiming a final automated benchmark. The limits of this choice remain explicit. The scoring is not blinded, the dataset is small, and the rubric still depends on expert judgment rather than on a fixed gold benchmark for every field. The current study should therefore be read as a disciplined prototype comparison rather than as a benchmark-grade evaluation with inter-rater reliability claims.</p>
+<h3>4.4 Stress-test and regression logic</h3>
+<p>The experiment uses two complementary sets. The main proof-oriented set is a targeted stress-test of 9 local cases built to expose three failure modes: cross_episode_contamination, multi_action_confusion, and same_trigger_different_goal. These are the cases where an explicit episode layer should matter most.</p>
+<p>The second set is a broader curated regression. Its role is not to establish the paper's strongest claim, but to check that the stricter episode condition does not collapse outside the hardest cases. This broader set therefore functions as a safety check rather than as the main source of evidence.</p>
+<h2>5. Results</h2>
+<h3>5.1 Stress-test superiority on contamination-prone cases</h3>
+<p>The strongest current result comes from the targeted stress-test. On this set, DecisionEpisode + strict projection outperformed combined_rrf across all four scored dimensions.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th style="text-align: right;">Completeness</th>
+<th style="text-align: right;">Traceability</th>
+<th style="text-align: right;">Usefulness</th>
+<th style="text-align: right;">Coherence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>combined_rrf</td>
+<td style="text-align: right;">4.02</td>
+<td style="text-align: right;">3.64</td>
+<td style="text-align: right;">2.74</td>
+<td style="text-align: right;">3.83</td>
+</tr>
+<tr>
+<td>DecisionEpisode + strict projection</td>
+<td style="text-align: right;">4.27</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">3.93</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+</tbody>
+</table>
+<p>In pairwise comparison, DecisionEpisode + strict projection was preferred in 6 cases, combined_rrf was preferred in 1, and 2 cases were scored as ties.</p>
+<p>This result supports a bounded interpretation. On contamination-prone local cases, the episode-oriented condition more often preserved a clean challenge-action-goal-outcome path, while the relation-rich baseline more often carried distractor actions or adjacent episode evidence. The gain is therefore not best understood as retrieval breadth. It is better understood as boundedness.</p>
+<h3>5.2 Mechanism of improvement</h3>
+<p>The case summaries suggest a consistent mechanism behind the gains. On cross-episode contamination cases, strict projection removed semantically related but non-focal material. On multi-action confusion cases, it preserved the action path aligned with the focal goal more clearly than the non-episode baseline. In both patterns, the advantage came from excluding plausible but irrelevant context rather than from adding more content.</p>
+<p><img alt="Figure 7. Comparison of context-construction outputs for the same SME decision situation." src="../figures/fig7_episode_projection_comparison.png"></p>
+<p><em>Figure 7. Comparison of context-construction outputs for the same decision situation. The combined_rrf panel preserves relevant but weakly bounded peripheral context, whereas DecisionEpisode + strict projection preserves a narrower challenge-action-goal-outcome path by removing distractor material.</em></p>
+<p>This matters because it connects the result directly to the method claim. The argument of the paper is not that richer retrieval is always weak. It is that richer retrieval can remain insufficiently bounded when several related actions, goals, or episodes share the same local context.</p>
+<h3>5.3 Mixed broader regression</h3>
+<p>The broader curated regression produced a more mixed pattern.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th style="text-align: right;">Completeness</th>
+<th style="text-align: right;">Traceability</th>
+<th style="text-align: right;">Usefulness</th>
+<th style="text-align: right;">Coherence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text_rag</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">3.25</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+<tr>
+<td>node_rrf</td>
+<td style="text-align: right;">3.79</td>
+<td style="text-align: right;">3.94</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+<tr>
+<td>combined_rrf</td>
+<td style="text-align: right;">4.46</td>
+<td style="text-align: right;">4.57</td>
+<td style="text-align: right;">3.93</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+<tr>
+<td>DecisionEpisode + strict projection</td>
+<td style="text-align: right;">4.24</td>
+<td style="text-align: right;">4.46</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+</tbody>
+</table>
+<p>This table does not support universal superiority of the episode condition. On cleaner or already well-structured cases, combined_rrf remained competitive and in some dimensions slightly stronger. That result is consistent with the narrower paper claim. The method is motivated by ambiguity and contamination, not by a requirement to dominate all local cases. The broader regression should therefore be read as a safety check on competitiveness, not as the proof set for the paper's main empirical statement.</p>
+<p>One plausible explanation is that, on simpler cases, the benefit of stricter episode enforcement becomes smaller because the baseline is already working with relatively little ambiguity. In such settings, a broader relation-rich package may remain sufficient and can even preserve weakly useful peripheral context that a stricter episode boundary removes. This does not reverse the central result of the paper, but it does clarify the intended operating region of the method: ambiguity-heavy, contamination-prone decisions rather than all SME support cases equally.</p>
+<h3>5.4 Extraction boundary</h3>
+<p>The extraction audit remains feasibility-level. Some elements of the prototype pipeline, especially actions, trigger, and parts of goal recovery, appear relatively stable. Other components, especially constraints, uncertainties, and fully reliable focus recovery, remain weak. The current evidence therefore supports an inspectable prototype extraction-and-projection pipeline, not robust episode extraction at scale.</p>
+<h2>6. Discussion</h2>
+<p>The short-paper claim can now be stated precisely. In the current prototype setting, graph memory plus relation-rich retrieval was not always enough to preserve a bounded decision situation on difficult local cases. Adding a DecisionEpisode layer inside a scenario-memory framework, followed by strict projection, helped when the main risk was contamination from adjacent but semantically plausible context. This is a meaningful result because it matches the theoretical role assigned to the episode layer.</p>
+<p>At the same time, the present evidence should be interpreted conservatively. First, the corpus is local and curated. It is suitable for prototype comparison, not for broad external claims about SME populations or operating environments. Second, the validation unit is the decision situation, not a large annotated benchmark of stable episode objects. Third, the extraction audit is still feasibility-level. Fourth, the mixed broader regression shows that the method does not currently justify claims of universal superiority over relation-rich retrieval.</p>
+<p>These limitations are not incidental. They define the evidential boundary of the paper. The current study supports a methodological argument with bounded prototype evidence: if the decision task is vulnerable to cross-episode contamination or action-goal confusion, an explicit episode layer can help organize the same graph-based evidence more cleanly. It does not yet support claims about business ROI, production readiness, general benchmark dominance, or robust extraction accuracy.</p>
+<p>The main risk is also not one-sided. A broader retrieval package can contaminate the focal decision with semantically adjacent but non-focal material, but a stricter episode boundary can also over-filter. If a latent cash, staffing, or supply constraint is not recovered into the episode, strict projection may produce a cleaner but misleading decision package by excluding a constraint that should still shape the action discussion. This false-negative risk is especially important in SME settings, where one omitted operational constraint can materially change the recommendation.</p>
+<p>One practical way to address this risk is to treat the episode boundary as layered rather than absolute. Under such a design, the initial DecisionEpisode would remain the primary bounded view, but the system could support a fallback or expansion mechanism when the current episode appears insufficient for decision support. If the reasoning layer detects unresolved uncertainty, missing justification, or an incomplete action path, it could request a controlled expansion into adjacent episodes or peripheral context rather than immediately reverting to unrestricted retrieval. This would preserve the main benefit of scenario memory, namely boundedness, while reducing the chance that one omitted latent constraint silently dominates the recommendation.</p>
+<p>The current method therefore depends on a minimally structured graph substrate. It assumes that the underlying business memory can distinguish, at least imperfectly, between challenge, action, goal, outcome, and evidence relations. If those distinctions are absent, weakly recoverable, or inconsistently encoded in the source records, episode construction and projection will degrade accordingly. The present paper should therefore be read as evidence for a bounded organizational idea under graph-backed local conditions, not as proof that any weakly structured SME record environment can already support reliable scenario memory.</p>
+<p>The main implication is therefore methodological rather than product-facing. For graph-based decision support, the important design question may not only be how much context can be retrieved, but also what organizational unit determines which context belongs together before reasoning begins.</p>
+<h2>7. Conclusion</h2>
+<p>This paper developed a short and bounded argument for scenario memory as an organizational framework over graph-based business memory for SME decision support, with DecisionEpisode as its core operational unit. The core claim was not that retrieval is unnecessary, nor that graph memory is insufficient in principle. The claim was that decision-grade support often requires an explicit bounded situation representation between distributed memory and query-time reasoning.</p>
+<p>Within a local prototype evaluation, DecisionEpisode + strict projection showed targeted superiority on contamination-prone stress cases, improving coherence, traceability, and decision usefulness relative to the strongest non-episode graph baseline. However, the broader regression remained mixed, and the extraction audit remained feasibility-level. The current evidence therefore supports only a narrow conclusion: bounded episode organization is promising for difficult local decision situations, but broader validation remains necessary.</p>
+<p>The next step is not to expand the claim. It is to test the same organizational idea on a larger curated set with clearer inclusion rules, stronger projection diagnostics, and tighter evaluation of boundary errors and slot recovery.</p>
+<h2>References</h2>
+<p>Cowden, B., M. Karami, J. Tang, W. Ye, and S. Adomako. 2022. "Uncertainty and Decision Making in Small Firms." <em>Journal of the International Council for Small Business</em> 3(4): 255-261. https://doi.org/10.1080/26437015.2022.2098081.</p>
+<p>Doumbouya, M. B., B. Kamsu-Foguem, H. Kenfack, and C. Foguem. 2015. "A Framework for Decision Making on Teleexpertise with Traceability of the Reasoning." <em>IRBM</em> 36(1): 40-51. https://doi.org/10.1016/j.irbm.2014.09.002.</p>
+<p>Gibson, B. 1992. "Financial Information for Decision Making: An Alternative Small Firm Perspective." <em>The Journal of Entrepreneurial Finance</em> 1(3): 221-232. https://doi.org/10.57229/2373-1761.1123.</p>
+<p>Hansen, E. B., and S. Bogh. 2021. "Artificial Intelligence and Internet of Things in Small and Medium-Sized Enterprises: A Survey." <em>Journal of Manufacturing Systems</em> 58: 362-372. https://doi.org/10.1016/j.jmsy.2020.08.009.</p>
+<p>Oldemeyer, L., A. Jede, and F. Teuteberg. 2025. "Investigation of Artificial Intelligence in SMEs: A Systematic Review of the State of the Art and the Main Implementation Challenges." <em>Management Review Quarterly</em> 75(2): 1185-1227. https://doi.org/10.1007/s11301-024-00405-4.</p>
+<p>Phillips-Wren, G., M. Daly, and F. Burstein. 2021. "Reconciling Business Intelligence, Analytics and Decision Support Systems: More Data, Deeper Insight." <em>Decision Support Systems</em> 146: 113560. https://doi.org/10.1016/j.dss.2021.113560.</p>
+<p>Salles, M. 2006. "Decision Making in SMEs and Information Requirements for Competitive Intelligence." <em>Production Planning &amp; Control</em> 17(3): 229-237. https://doi.org/10.1080/09537280500285367.</p>
+<p>Schwaeke, J., A. Peters, D. K. Kanbach, S. Kraus, and P. Jones. 2025. "The New Normal: The Status Quo of AI Adoption in SMEs." <em>Journal of Small Business Management</em> 63(3): 1297-1331. https://doi.org/10.1080/00472778.2024.2379999.</p>
+<p>Smith, K. G., M. J. Gannon, C. Grimm, and T. R. Mitchell. 1988. "Decision Making Behavior in Smaller Entrepreneurial and Larger Professionally Managed Firms." <em>Journal of Business Venturing</em> 3(3): 223-232. https://doi.org/10.1016/0883-9026(88)90016-X.</p>
+<p>Wong, A., S. Holmes, and M. T. Schaper. 2018. "How Do Small Business Owners Actually Make Their Financial Decisions? Understanding SME Financial Behaviour Using a Case-Based Approach." <em>Small Enterprise Research</em> 25(1): 36-51. https://doi.org/10.1080/13215906.2018.1428909.</p>
+</body>
+</html>

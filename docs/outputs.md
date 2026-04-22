@@ -4,6 +4,8 @@ Public-facing artifacts from this repository.
 
 | Date | Output | Type | Summary | Link |
 | --- | --- | --- | --- | --- |
+| 2026-04-22 | Section 5 experiments chapter | PDF | Paper-style experiments chapter covering targeted re-test design, validation KG, and bounded results for `DecisionEpisode + strict projection` | [PDF](../output/pdfs/05_experiments.pdf) |
+| 2026-04-11 | Section 4 evaluation chapter | PDF | Paper-style evaluation design chapter comparing fragment retrieval with scenario-oriented context construction | [PDF](../output/pdfs/04_evaluation_design.pdf) |
 | 2026-04-01 | Section 3 method chapter | PDF | Compressed conference-style method chapter on scenario memory for decision-grade SME context | [PDF](../output/pdfs/section_3_method.pdf) |
 | 2026-04-01 | SME decision support review | PDF | First review-analysis article synthesized from the initial literature notes | [PDF](../output/pdf/sme_decision_support_review_export.pdf) |
 | 2026-04-01 | Review matrix | Markdown | Compact comparison table across the first-pass source set | [Matrix](../references/notes/sme_ai_decision_review_matrix.md) |

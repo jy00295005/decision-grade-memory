@@ -1,5 +1,8 @@
 # TODO
 
+- [ ] Audit which ProsperPath cases can support a defensible 15-30 item decision-situation set
+- [ ] Tighten the pilot scoring rubric so context completeness, traceability, missing-information awareness, and decision usefulness are less overlapping
+- [ ] Define the exact inclusion and exclusion rules for the next experiment round before writing any results section
 - [ ] Finalize problem definition
 - [ ] Refine target contribution framing
 - [ ] Collect 15-20 core references
@@ -19,3 +22,8 @@
 - [ ] Draft method skeleton
 - [ ] Convert the Method section into a citation-backed architecture narrative by mapping each design block to either implementation evidence (`prosperpath`) or formal literature support
 - [ ] Compress the Section 4 evaluation-design notes into a paper-ready experiments section after the next `15-30` case round is defined
+- [ ] Turn `experiments/decision_episode_targeted_retest_results.md` into a narrow paper subsection on targeted stress-test superiority versus `combined_rrf`
+- [ ] Decide whether the full regression table belongs in the main text or appendix, since it does not show universal `DecisionEpisode` superiority
+- [ ] Decide how `manuscript/05_experiments/01-03` should map into the final Section 5 assembly and whether the full regression table should move to an appendix-style note
+- [ ] Add a citation-tight pass and export-ready assembly for `manuscript/sections/short_paper_conference.md`
+- [ ] Add a second-rater or structured follow-up validation plan for the short-paper scoring rubric, especially for over-filtering and omitted-constraint cases

@@ -4,13 +4,20 @@ This repository is intended to be readable as an evolving research series rather
 
 ## Current series outline
 
-- Chapter 1 - Setup and literature review
-- Chapter 2 - Problem definition
-- Chapter 3 - Scenario-memory framing
-- Chapter 4 - Method framing
-- Chapter 5 - Graph design
-- Chapter 6 - Evaluation design
-- Chapter 7 - Manuscript integration
+- Day 1 - Review-analysis and problem framing
+- Day 2 - Method framing and scenario-memory design
+- Day 3 - Evaluation design and pilot planning
+- Next - Data and graph design
+- Next - Chapter integration and manuscript tightening
+
+## Reading order for new visitors
+
+1. [Landing page](index.md)
+2. [Outputs](outputs.md)
+3. [Research log](research_log.md)
+4. [Research positioning](research_positioning.md)
+5. [Method PDF](../output/pdfs/section_3_method.pdf)
+6. [Evaluation PDF](../output/pdfs/04_evaluation_design.pdf)
 
 ## Current public entry points
 

@@ -14,6 +14,16 @@ The project asks a narrow question:
 
 How should AI systems support SME decision-making when decisions are weakly structured, constraint-heavy, and distributed across incomplete records, prior episodes, and changing business conditions?
 
+## For readers coming from the next post
+
+- This is not a one-shot AI writing demo.
+- The paper is being built bottom-up, one chapter at a time.
+- The current chapter sequence is:
+  - Day 1: review-analysis on SME decision pain points and AI support limits
+  - Day 2: Method chapter on scenario memory and decision episodes
+  - Day 3: Evaluation design comparing fragment retrieval with scenario-oriented context construction
+- The main idea is narrow: some SME decisions need decision-grade context, not just isolated fragments.
+
 ## Start here
 
 - [Latest method PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdfs/section_3_method.pdf)
@@ -28,8 +38,10 @@ How should AI systems support SME decision-making when decisions are weakly stru
 
 ## Latest outputs
 
+- [Evaluation PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdfs/04_evaluation_design.pdf)
+- Day 3 result: evaluation design drafted as modular notes and exported as a paper-style chapter PDF.
 - [Method PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdfs/section_3_method.pdf)
-- Day 2 result: Section 3 / Method drafted, compressed, and exported as a paper-ready chapter PDF.
+- Day 2 result: Method chapter drafted and exported as a paper-ready chapter PDF.
 - Approximate effort: `2 hours`
 - Approximate cost: `$1.00`
 - [Review PDF on GitHub](https://github.com/jy00295005/decision-grade-memory/blob/main/output/pdf/sme_decision_support_review_export.pdf)
@@ -43,6 +55,7 @@ How should AI systems support SME decision-making when decisions are weakly stru
 - The AI literature is strong on retrieval, summarization, bounded prediction, and partial memory support.
 - The current gap appears narrower than `AI for SMEs` in general.
 - The most defensible framing so far is that some SME decisions may require more explicit episode-level context reconstruction and traceability than current support systems typically provide.
+- For the next post, the main message is that the project has moved from literature review into chapter-by-chapter paper construction.
 
 See the full positioning note here:
 
@@ -91,7 +104,7 @@ This project is a continuous research repository rather than a static final pape
 
 ## Current stage
 
-Literature review, problem framing, and research positioning.
+Literature review, problem framing, research positioning, Method drafting, and evaluation design.
 
 ## Principles
 
@@ -102,9 +115,10 @@ Literature review, problem framing, and research positioning.
 
 ## Next likely milestones
 
-1. Translate the method chapter into a matching data-and-graph design section.
-2. Tighten Section 2 -> Section 3 transitions so the paper reads as one argument rather than two artifacts.
-3. Expand direct evidence on SME decision episodes and information use.
+1. Write the data-and-graph design section so it aligns with the scenario-memory method claim.
+2. Turn the modular evaluation notes into a tighter Section 4 manuscript chapter if the next case round is strong enough.
+3. Tighten Section 2 -> Section 3 -> Section 4 transitions so the paper reads as one argument rather than separate artifacts.
+4. Keep the public story focused on the paper workflow rather than on isolated outputs.
 
 ## Research progress tracker
 
